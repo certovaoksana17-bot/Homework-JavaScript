@@ -1,4 +1,4 @@
-/*let number = -18;
+let number = -18;
 if (number > 0) {
     console.log("Число положительное");
 } else if (number < 0) {
@@ -23,9 +23,9 @@ if (number2 > 0) {
     console.log("Число отрицательное");
 } else {
     console.log("Число равно нулю");
-}*/
+}
 
-/*let height = prompt('Какой у вас рост?')
+let height = prompt('Какой у вас рост?')
 let weight = prompt('Какой у вас вес?')
 let BMI = 100(weight / (((height / 100) ** 2)))
 if (Number(BMI) <= 16) {
@@ -38,7 +38,7 @@ if (Number(BMI) <= 16) {
     alert('Избыточная масса тела')
 } else if (Number(BMI)) {
     alert('Ожирение')
-} */
+} 
 
 alert('Хочешь узнать, когда у тебя будет отпуск? :)')
 const month = prompt('Загадай число от 1 до 12')
@@ -87,7 +87,7 @@ switch (month) {
 
 alert(monthName);
 
-let titlePredictions = alert('А это печеньки с предсказаниями :)')
+alert('А это печеньки с предсказаниями :)')
 const prediction = prompt('Загадай число от 1 до 14')
 let predictionName;
 

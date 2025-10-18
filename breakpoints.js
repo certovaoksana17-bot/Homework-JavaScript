@@ -27,8 +27,6 @@ function calculateAverage(numbers) {
 
 console.log(calculateAverage([2, 4, 6]));
 
-
-
 function findLargestNumber(arr) {
   let largest = arr[0];
   for (let i = 0; i < arr.length; i++) {

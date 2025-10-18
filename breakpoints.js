@@ -12,7 +12,7 @@ function hasEvenNumber(arr) {
   }
   return foundEven;
 }
-console.log(hasEvenNumber([1, 3, 4, 5])); // Ожидается: true
+console.log(hasEvenNumber([1, 3, 4, 5])); 
 
 
 
@@ -39,6 +39,6 @@ function findLargestNumber(arr) {
   return largest;
 }
 
-console.log(findLargestNumber([-30, -20, -10])); 
+console.log(findLargestNumber([-10, -20, -30])); 
 
 

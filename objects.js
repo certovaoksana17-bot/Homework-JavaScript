@@ -33,7 +33,9 @@ person.age = 27;
 delete person.greet;
 
 console.log(person)
+
 for (let key in person) {
     console.log(`${key} : ${person[key]}`)
 }
+
 console.log(Object.entries(person))

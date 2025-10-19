@@ -6,7 +6,7 @@ const person = {
     favoriteBook: {
         writer: 'Stephen King',
         nameBook: 'The Dark Tower',
-        years: 1982 - 2012
+        years: '1982 - 2012'
     },
     greet: function() {
         console.log('Hello!');
@@ -16,7 +16,7 @@ const person = {
 console.log(person.name)
 console.log(person.hobby)
 
-console.log(person['greet'])
+console.log(person.greet())
 
 console.log(person.favoriteBook['writer'])
 

@@ -22,7 +22,7 @@ function removeElementById(elementId) {
     if (element) {
         element.remove();
     } else {
-        console.warn(`Элемент с ID "${id}" не найден.`);
+        console.warn(`Элемент с ID "${elementId}" не найден.`);
     }
 }
 removeElementById("city"); 

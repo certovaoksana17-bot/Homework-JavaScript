@@ -5,8 +5,11 @@ function isPalindrome(str) {
 }
 console.log(isPalindrome('А роза упала на лапу Азора'));
 
-function findShortestWord(sentance) {
-    const words = sentance.split(/\s+/)
+function findShortestWord(sentence) {
+    if (sentence.trim() == '') {
+        return console.log('Тут пусто')
+    }
+    const words = sentence.split(/\s+/)
     let shortestWord = words[0]
     for (let i = 1; i < words.length; ++i) {
         if (words[i].length < shortestWord.length) {
@@ -21,19 +24,23 @@ const shortest = findShortestWord(mySentence)
 console.log(shortest)
 
 
-function formatPhone(phone) {
-    if (phone.length === 10) {
-        const countryCode = '8'
-        const operatorCode = phone.slice(0, 3);
-        const triade = phone.slice(3, 6);
-        const pair1 = phone.slice(6, 8);
-        const pair2 = phone.slice(8, 11);
-        return countryCode + "(" + operatorCode + ")" + triade + "-" + pair1 + "-" + pair2;
-    }
+function formatPhone(numbers) {
+    let format ='(xxx) xxx-xxxx';
+    
+  for(let i = 0; i < numbers.length; i++){
+    format = format.replace('x', numbers[i]);
+}
+    let newFormat = format.replace(/[()\[\]{}\s-]/g, '');
+  if (numbers.length > newFormat.length){
+    throw new Error("Номер слишком длинный")
+  
+}
+  return 8 + format;
 }
 const myValue = '9993334455'
 const myNumberPhone = formatPhone(myValue)
 console.log(myNumberPhone)
+
 
 const number = [4, 6, 12, 18, 25, 2]
 const result = number.reduce(
@@ -51,11 +58,11 @@ console.log('Максимальное значение:', result.max)
 
 
 
-function BubbleSort(array) {
+function bubbleSort(array) {
     let n = array.length
   for (let i = 0; i < n - 1; i++)
   {
-    for(j = 0; j < n - 1 - i; j++)
+    for(let j = 0; j < n - 1 - i; j++)
     {
       if(array[j] > array[j + 1])
       {
@@ -68,5 +75,5 @@ function BubbleSort(array) {
   return array
 }
 let numbers = [3, 12, 10, 1 , 5];
-let sortedValue = BubbleSort(numbers)
+let sortedValue = bubbleSort(numbers)
 console.log(sortedValue)

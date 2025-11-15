@@ -55,25 +55,17 @@ const result = number.reduce(
 console.log('Минимальное значение:', result.min)
 console.log('Максимальное значение:', result.max)
 
-
-
-
-function bubbleSort(array) {
-    let n = array.length
-  for (let i = 0; i < n - 1; i++)
-  {
-    for(let j = 0; j < n - 1 - i; j++)
-    {
-      if(array[j] > array[j + 1])
-      {
-        let temp = array[j]
-        array[j] = array[j + 1]
-        array[j + 1] = temp
+function bubbleSort(arr) {
+  for (let i = 0; i < arr.length; i++) {
+    for (let j = 0; j < arr.length - 1 - i; j++) {
+      if (arr[j] > arr[j + 1]) {
+        const tmp = arr[j];
+        arr[j] =  arr[j + 1];
+        arr[j + 1] = tmp;
       }
     }
   }
-  return array
+ console.log(arr)
 }
-let numbers = [3, 12, 10, 1 , 5];
-let sortedValue = bubbleSort(numbers)
-console.log(sortedValue)
+const test = [33, 245, 1, 15, 122, 5, 65, 90];
+bubbleSort(test);

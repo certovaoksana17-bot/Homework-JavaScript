@@ -13,10 +13,10 @@ const products = [
   { name: 'Product 2', price: 20 }
 ]
 const multiplier = 1.2;
-products.forEach(item => {
-  item.price *= multiplier
+products.forEach(product => {
+  const total = product.price *= multiplier;
+  console.log(`Total for ${product.name}:`, total)
 })
-console.log(products)
 
 
 // 2 задание
@@ -43,7 +43,7 @@ if (user.isAdmin && user.isActive && user.age > 18) {
 // 3 задание
 // В следующей функции выполняется слишком много операций. Разделите её на несколько более коротких функций,
 // чтобы улучшить читаемость и повторное использование кода:
-function checkStock(item) {
+/*function checkStock(item) {
   return Math.random() < 0.5; // Возвращает рандомно true или false, это просто иммитация функции!
 }
 function processOrder(order) {
@@ -66,24 +66,44 @@ function processOrder(order) {
   }
   // Выполнение заказа
   console.log('Order processed with total:', total);
-}
+}*/
+
 
 function checkStock(item) {
-  return Math.random() < 0.5; //Я не знаю что с ней делать, пусть будет:D
+  return Math.random() < 0.5;
 }
 function processOrder(order) {
-   let total = 0;
-  for (let item of order.items) {
+  // Валидация данных заказа
+  if (!order.id || !order.items || order.items.length === 0) {
+    console.log('Invalid order');
+    return;
+  }
+  // Рассчет суммы
+  const total = order.items.reduce((accumulator, item) => {
+    return accumulator + item.price * item.quantity;
+  }, 0);
+  // Проверка наличия на складе
+  const allItemsInStock = order.items.every(item => {
     if (!checkStock(item)) {
       console.log('Item out of stock:', item.name);
-      return;
-    } else if (!order.id || !order.items || order.items.length === 0) {
-      for (let item of order.items) {
-        total += item.price * item.quantity;
-      }
+      return false;
     }
+    return true;
+  });
+  // Выполнение заказа
+  if (allItemsInStock) {
+    console.log('Order processed with total:', total.toFixed(2));
   }
-  console.log('Order processed with total:', total);
 }
 
+const myOrder = {
+    id: 'ORD123',
+    items: [
+        { name: 'Laptop', price: 1000, quantity: 1 },
+        { name: 'Mouse', price: 20, quantity: 2 },
+        { name: 'Keyboard', price: 50, quantity: 1 }
+    ]
+};
+
+processOrder(myOrder);
 

@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Всплытие и Погружение</title>
+</head>
+
+<body>
+    <div id="first">Первый
+        <div id="second">Второй
+            <div id="third">Третий</div>
+        </div>
+    </div>
+
+    <form id="registration-form">
+        <input type="text" name="username" placeholder="Имя пользователя">
+        <input type="text" name="city" placeholder="Город">
+        <input type="email" name="email" placeholder="Email">
+        <button type="submit">Отправить</button>
+    </form>
+    <p id="message-error" style="color:red"></p>
+
+
+    <script>
+        const firstElement = document.querySelector('#first');
+        const secondElement = document.querySelector('#second');
+        const thirdElement = document.querySelector('#third');
+
+        firstElement.addEventListener('click', () => console.log('First element: Погружение'), true)
+        secondElement.addEventListener('click', () => console.log('Second element: Погружение'), true)
+        thirdElement.addEventListener('click', () => console.log('Third element: Погружение'), true)
+
+        firstElement.addEventListener('click', () => console.log('First element: Всплытие'), false)
+        secondElement.addEventListener('click', () => console.log('Second element: Всплытие'), false)
+        thirdElement.addEventListener('click', () => console.log('Third element: Всплытие'), false)
+
+        secondElement.addEventListener('click', (event) => {
+            console.log('Second element: Здесь погружение остановится')
+            event.stopPropagation()
+        })
+
+
+
+        const form = document.querySelector('#registration-form')
+        const error = document.querySelector('#message-error')
+
+        form.addEventListener('input', (e) => {
+            const target = e.target
+
+            if (target.tagName === 'INPUT') {
+                const value = target.value
+
+                if (value.length > 20) {
+                    target.style.borderColor = 'red';
+                    error.textContent = `Ошика в поле ${target.placeholder}`;
+                } else {
+                    target.style.borderColor = 'green';
+                    error.textContent = '';
+                }
+            }
+        })
+    </script>
+</body>
+
+</html>

@@ -1,5 +1,5 @@
 function startCountdown(seconds) {
-    if (seconds < 0) {
+    if (seconds <= 0) {
         console.log('Время вышло!');
         return;
     }
@@ -35,19 +35,23 @@ const actionBtn = document.getElementById('actionBtn');
 const textInput = document.getElementById('textInput');
 
 actionBtn.addEventListener('click', () => {
-if(timerId !== null) {
-    stopProcess()
-} else {
-    startProcess()
-}
+    if (timerId !== null) {
+        stopProcess()
+    } else {
+        startProcess()
+    }
 })
 
 function startProcess() {
-    const delay = parseInt(delayInput.value) || 1000;
+    let delay = parseInt(delayInput.value);
+    if (isNaN(delay) || delay < 100) {
+        alert('Минимальная задержка - 100мс');
+        delay = 1000;
+        delayInput.value = 1000;
+    }
     actionBtn.textContent = 'Стоп';
-
     timerId = setInterval(() => {
-console.log(textInput.value)
+        console.log(textInput.value || 'Текст не введен')
     }, delay)
 }
 

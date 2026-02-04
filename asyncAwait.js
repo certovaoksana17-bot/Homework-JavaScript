@@ -11,6 +11,9 @@ runDelay(2000)
 
 
 async function fetchUserData(userId) {
+    if(typeof userId !== 'number' || userId < 1) {
+        throw new Error('Некорректный ID пользователя')
+    }
     try {
         const response = await fetch(`https://jsonplaceholder.typicode.com/users/${userId}`);
         
@@ -23,6 +26,7 @@ async function fetchUserData(userId) {
         return userData;
     } catch (error) {
         console.error('Произошла ошибка:', error);
+        throw error;
     }
 }
 

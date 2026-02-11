@@ -39,7 +39,7 @@
         secondElement.addEventListener('click', (event) => {
             console.log('Second element: Здесь погружение остановится')
             event.stopPropagation()
-        })
+        }, true)
 
 
 
@@ -52,9 +52,9 @@
             if (target.tagName === 'INPUT') {
                 const value = target.value
 
-                if (value.length > 20) {
+                if (value.length > 20 || value === '') {
                     target.style.borderColor = 'red';
-                    error.textContent = `Ошика в поле ${target.placeholder}`;
+                    error.textContent = `Ошибка в поле ${target.placeholder}`;
                 } else {
                     target.style.borderColor = 'green';
                     error.textContent = '';

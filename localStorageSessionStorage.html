@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Local Storage и Session Storage</title>
+</head>
+
+<body>
+    <form class="person" style="display: flex; flex-direction: column; width: 300px; gap: 10px">
+        <input type="text" id="name" placeholder="Имя">
+        <input type="number" id="phone" placeholder="Телефон">
+        <input type="email" id="email" placeholder="E-mail">
+        <button type="submit">Сохранить контакт</button>
+    </form>
+
+    <div id="displayArea" style="display: none;">
+        <h3>Сораненный контакт:</h3>
+        <p>Имя: <span id="outName"></span></p>
+        <p>Телефонный номер: <span id="outPhone"></span></p>
+        <p>E-mail: <span id="outEmail"></span></p>
+        <button id="clearBtn">Очистить память</button>
+    </div>
+
+
+    <div class="card" style="display: flex; flex-direction: column; width: 300px; gap: 10px">
+        <h2>Добавить расход</h2>
+        <input type="text" id="desc" placeholder="Описание">
+        <input type="number" placeholder="Сумма" id="amount">
+        <input type="date" id="date">
+        <button onclick="addExpense()">Добавить</button>
+
+        <h3>Список расходов</h3>
+        <div id="expenseList"></div>
+    </div>
+
+
+    <div class="card">
+        <strong>Время на странице:</strong>
+        <span id="timer">0</span> сек.
+    </div>
+
+    
+    <script src="localStorageSessionStorage.js"></script>
+</body>
+
+</html>

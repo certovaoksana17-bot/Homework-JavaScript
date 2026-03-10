@@ -17,7 +17,7 @@ function displayContact() {
 }
 
 form.addEventListener('submit', (e) => {
-    e.preventDefault() //отменяет перезагрузку страницы
+    e.preventDefault() 
 
 
     const contactObject = {
@@ -44,7 +44,7 @@ displayContact()
 
 
 
-let expenses = JSON.parse(localStorage.getItem('expenses')) || []
+const expenses = JSON.parse(localStorage.getItem('expenses')) || []
 
 function renderExpenses() {
     const list = document.getElementById('expenseList')
@@ -77,6 +77,7 @@ function addExpense() {
 
     document.getElementById('desc').value = ''
     document.getElementById('amount').value = ''
+     document.getElementById('date').value = '' 
 }
 
 function deleteExpense(index) {

@@ -12,7 +12,7 @@ form.addEventListener('submit', async (e) => {
     }
 
     try {
-        const response = await fetch('https://jsonplaceholder.typicode.com/posts', {
+        const response = await fetch(`https://jsonplaceholder.typicode.com/posts`, {
             method: 'POST',
             body: JSON.stringify(formData),
             headers: {
@@ -49,7 +49,7 @@ loadBtn.addEventListener('click', async () => {
     postsList.innerHTML = ''
 
     try {
-        const response = await fetch('https://jsonplaceholder.typicode.com/posts')
+        const response = await fetch(`https://jsonplaceholder.typicode.com/posts`)
         const posts = await response.json()
 
         posts.slice(0,10).forEach(post => {
@@ -85,7 +85,7 @@ async function deletePost(id) {
     if (!confirm('Вы уверены, что хотите удалить этот пост?')) return
 
     try {
-        const response = await fetch('https://jsonplaceholder.typicode.com/posts/${id}', {
+        const response = await fetch(`https://jsonplaceholder.typicode.com/posts/${id}`, {
             method: 'DELETE'
         })
 
@@ -112,7 +112,7 @@ async function updatePost(id) {
     }
 
     try {
-        const response = await fetch ('https://jsonplaceholder.typicode.com/posts/${id}', {
+        const response = await fetch (`https://jsonplaceholder.typicode.com/posts/${id}`, {
              method: 'PUT',
             body: JSON.stringify ({
                 id: id,

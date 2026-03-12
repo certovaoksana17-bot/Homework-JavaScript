@@ -24,10 +24,14 @@ async function fetchInitialTodos() {
 function addTodo() {
     const text = todoInput.value.trim()
     if (!text) return
-    todos.push({ id: Date.now(), text, completed: false})
+
+    const id = Date.now() + Math.floor(Math.random() * 10000)
+
+    todos.push({ id, text, completed: false})
     todoInput.value = ''
     saveAndRender()
 
+    todoInput.focus()
 }
 
 function deleteTodo(id) {
@@ -71,18 +75,32 @@ function render() {
     filtered.forEach(todo => {
         const div = document.createElement('div')
         div.className = `todo-item ${todo.completed ? 'completed' : ''}`
-        div.innerHTML = `
-            <input type="checkbox" ${todo.completed ? 'checked' : ''} onchange="toggleTodo(${todo.id})">
-            <span>${todo.text}</span>
-            <button class="btn-remind" onclick="setReminder('${todo.text.replace(/'/g, "&apos;")}')">⏰</button>
-            <button class="btn-del" onclick="deleteTodo(${todo.id})">🗑️</button>
-        `;
+        
+        const checkbox = document.createElement('input')
+        checkbox.type = 'checkbox'
+        checkbox.checked = todo.completed
+        checkbox.addEventListener('change', () => toggleTodo(todo.id))
+
+        const span = document.createElement('span')
+        span.textContent = todo.text
+
+        const remindBtn = document.createElement('button')
+        remindBtn.className = 'btn-remind'
+        remindBtn.textContent = '⏰'
+        remindBtn.addEventListener('click', () => setReminder(todo.text))
+
+        const delBtn = document.createElement('button')
+        delBtn.className = 'btn-del'
+        delBtn.textContent = '🗑️'
+        delBtn.addEventListener('click', () => deleteTodo(todo.id))
+
+        div.append(checkbox, span, remindBtn, delBtn)
         todoList.appendChild(div)
     });
 }
 
 addBtn.onclick = addTodo
-todoInput.keydown = (e) => e.key === 'Enter' && addTodo()
+todoInput.onkeydown = (e) => e.key === 'Enter' && addTodo()
 
 filterBtns.forEach(btn => {
     btn.onclick = () => {
